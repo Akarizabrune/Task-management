@@ -52,7 +52,7 @@ export const loginUser = async (email, password) => {
   // Compare password
   const isMatch = await user.comparePassword(password);
   if (!isMatch) {
-    throw new ApiError('Invalid credentials', 401);
+    return new ApiError('Invalid credentials', 401);
   }
 
   const token = generateToken(user._id);
